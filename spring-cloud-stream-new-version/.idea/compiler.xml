@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="stream-common" />
+        <module name="new-version-consumer02" />
+        <module name="new-version-consumer01" />
+        <module name="simple-demo-gather" />
+        <module name="simple-demo" />
+        <module name="simple-demo-send" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
