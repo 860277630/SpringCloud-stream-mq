@@ -25,7 +25,7 @@ public class controller {
     @RequestMapping("send_groupA")
     public Object sendGroupA(String message){
         for (int i = 100; i > 0; i--) {
-            MessageBuilder<String> messageBuilder = MessageBuilder.withPayload(message);
+            MessageBuilder<String> messageBuilder = MessageBuilder.withPayload(message+"======"+i);
             source.output().send(messageBuilder.build());
         }
         return "message sended:"+message;
@@ -34,7 +34,7 @@ public class controller {
     @RequestMapping("send_groupB")
     public Object sendGroupB(String message){
         for (int i = 100; i > 0; i--) {
-            MessageBuilder<String> messageBuilder = MessageBuilder.withPayload(message);
+            MessageBuilder<String> messageBuilder = MessageBuilder.withPayload(message+"======"+i);
         myProducter02.myProducter02().send(messageBuilder.build());
         }
         return "message sended:"+message;
