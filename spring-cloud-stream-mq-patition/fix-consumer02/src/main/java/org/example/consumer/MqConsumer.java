@@ -1,6 +1,7 @@
 package org.example.consumer;
 
 import org.example.config.MyConsumer01;
+import org.example.config.MyConsumer02;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.stereotype.Component;
@@ -17,5 +18,10 @@ public class MqConsumer {
     @StreamListener(MyConsumer01.MY_CONSUMER01)
     public void process2(Object message){
         System.out.println("MyConsumer01 receive message from groupA:"+message);
+    }
+
+    @StreamListener(MyConsumer02.MY_CONSUMER02)
+    public void process1(Object message){
+        System.out.println("MyConsumer02 receive message from groupB:"+message);
     }
 }

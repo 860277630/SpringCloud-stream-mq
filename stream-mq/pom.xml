@@ -58,26 +58,26 @@
             <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
             <version>2021.1</version>
             <exclusions>
-<!--                <exclusion>
+                <exclusion>
                     <groupId>org.apache.rocketmq</groupId>
                     <artifactId>rocketmq-client</artifactId>
-                </exclusion>-->
-<!--                <exclusion>
+                </exclusion>
+                <exclusion>
                     <groupId>org.apache.rocketmq</groupId>
                     <artifactId>rocketmq-acl</artifactId>
-                </exclusion>-->
+                </exclusion>
             </exclusions>
         </dependency>
-<!--        <dependency>
+        <dependency>
             <groupId>org.apache.rocketmq</groupId>
             <artifactId>rocketmq-client</artifactId>
             <version>4.2.0</version>
-        </dependency>-->
-<!--        <dependency>
+        </dependency>
+        <dependency>
             <groupId>org.apache.rocketmq</groupId>
             <artifactId>rocketmq-acl</artifactId>
             <version>4.4.0</version>
-        </dependency>-->
+        </dependency>
 
     </dependencies>
 

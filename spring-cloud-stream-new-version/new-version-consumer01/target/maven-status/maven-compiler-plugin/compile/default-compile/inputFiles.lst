@@ -1,1 +1,4 @@
-E:\projects\spring-cloud-stream-new-version\new-version-consumer01\src\main\java\org\example\NewVersionConsumer01Application.java
+E:\gitRepository\SpringCloud-stream-mq\spring-cloud-stream-new-version\new-version-consumer01\src\main\java\org\example\controller\SendController.java
+E:\gitRepository\SpringCloud-stream-mq\spring-cloud-stream-new-version\new-version-consumer01\src\main\java\org\example\NewVersionConsumer01Application.java
+E:\gitRepository\SpringCloud-stream-mq\spring-cloud-stream-new-version\new-version-consumer01\src\main\java\org\example\config\RabbitMqConfig.java
+E:\gitRepository\SpringCloud-stream-mq\spring-cloud-stream-new-version\new-version-consumer01\src\main\java\org\example\config\KafkaConfig.java

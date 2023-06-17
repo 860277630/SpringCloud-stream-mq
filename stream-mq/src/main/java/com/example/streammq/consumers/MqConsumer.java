@@ -15,6 +15,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class MqConsumer {
 
+    @StreamListener(MyRocketSink.MYROCKETMQ_INPUT)
+    public void process3(Object message){
+        System.out.println("receive message:"+message);
+    }
+
     @StreamListener(Sink.INPUT)
     public void process1(Object message){
         System.out.println("receive message:"+message);
@@ -24,9 +29,6 @@ public class MqConsumer {
     public void process2(Object message){
         System.out.println("receive message:"+message);
     }
-    @StreamListener(MyRocketSink.MYROCKETMQ_INPUT)
-    public void process3(Object message){
-        System.out.println("receive message:"+message);
-    }
+
 
 }

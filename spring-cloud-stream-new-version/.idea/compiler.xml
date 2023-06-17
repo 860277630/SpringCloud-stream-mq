@@ -8,12 +8,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="stream-common" />
-        <module name="new-version-consumer02" />
         <module name="new-version-consumer01" />
-        <module name="simple-demo-gather" />
         <module name="simple-demo" />
         <module name="simple-demo-send" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="new-version-consumer02" target="1.7" />
+      <module name="simple-demo-gather" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

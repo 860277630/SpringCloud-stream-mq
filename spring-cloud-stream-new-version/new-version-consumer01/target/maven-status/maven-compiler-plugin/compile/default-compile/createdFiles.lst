@@ -1,1 +1,4 @@
+org\example\config\KafkaConfig.class
+org\example\config\RabbitMqConfig.class
 org\example\NewVersionConsumer01Application.class
+org\example\controller\SendController.class

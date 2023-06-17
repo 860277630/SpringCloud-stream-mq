@@ -19,13 +19,13 @@ public class controller {
     @Autowired
     private MyKafkaSource myKafkaSource;
 
-
     @RequestMapping("send_msg")
-    public Object sendGroupA(String message){
-        for (int i = 100; i > 0; i--) {
-            MessageBuilder<String> messageBuilder = MessageBuilder.withPayload(message+"====="+i).setHeader("partiton",i);
-            myKafkaSource.mykafkaOutput().send(messageBuilder.build());
-        }
-        return "message sended:"+message;
+    public Object sendGroupA(String message) {
+
+        MessageBuilder<String> messageBuilder =
+                MessageBuilder.withPayload(message).setHeader("partiton", 5);
+        myKafkaSource.mykafkaOutput().send(messageBuilder.build());
+
+        return "message sended:" + message;
     }
 }

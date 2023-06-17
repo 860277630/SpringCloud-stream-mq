@@ -10,11 +10,9 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>new-version-consumer01</module>
-        <module>new-version-consumer02</module>
         <module>stream-common</module>
         <module>simple-demo</module>
         <module>simple-demo-send</module>
-        <module>simple-demo-gather</module>
     </modules>
     <!--定义springcloud使用版本号  太高的版本将不能使用java8进行编译-->
     <properties>

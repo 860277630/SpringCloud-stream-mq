@@ -1,0 +1,89 @@
+server.port=8080
+#������Ϊ3.1�汾ǰ ������3.1�汾
+# ��������ǳ��õ� ��������  ���  ����Ҫ������ ������������
+############################################# stage.1 ##############################################
+
+#ָ���������� �ֱ���  rabbitMQ  kafka  rocketMQ
+#�Զ��������� �ֱ�Ϊ  myrabbitmq  mykafka   myrocketmq
+#������myRabbitMqΪĬ������
+
+# 1.�������� rabbitMQ ���Զ������� myrabbitmq
+spring.cloud.stream.binders.myrabbitmq.type=rabbit
+spring.cloud.stream.binders.myrabbitmq.environment.spring.rabbitmq.host=127.0.0.1
+spring.cloud.stream.binders.myrabbitmq.environment.spring.rabbitmq.prot=15672
+spring.cloud.stream.binders.myrabbitmq.environment.spring.rabbitmq.username=guset
+spring.cloud.stream.binders.myrabbitmq.environment.spring.rabbitmq.password=guset
+spring.cloud.stream.binders.myrabbitmq.environment.spring.rabbitmq.virtual-host=/
+
+
+#2.Ȼ������  kafka ���Զ������� mykafka
+
+
+spring.cloud.stream.binders.mykafka.type=kafka
+spring.cloud.stream.binders.mykafka.environment.spring.cloud.stream.kafka.binder.brokers=192.168.200.203:9092
+
+
+
+#3.Ȼ������  rocketMQ ���Զ������� myrocketmq
+
+spring.cloud.stream.binders.myrocketmq.type=rocketmq
+spring.cloud.stream.binders.myrocketmq.environment.spring.cloud.stream.rocketmq.binder.name-server=192.168.227.203:10911
+spring.cloud.stream.binders.myrocketmq.environment.spring.cloud.stream.rocketmq.binder.enable-msg-trace=true
+
+
+#4.Ȼ������ myrabbitmq  Ϊ  Ĭ�ϵ�  mq���������������ߺ������� �Ҳ���mq��Ϊ����
+spring.cloud.stream.default-binder=myrabbitmq
+
+########################################### stage.2 ################################################
+# �����Ѿ������  MQ  ���潫 Ϊÿ��MQָ�� �����ߺ�������  ������Ϣͨ��
+# myrocketmq ʹ�õ���  �Զ���  ��������    myrocketmq_output ��������   myrocketmq_input ʹ�õ���Ϣͨ����  myrocketmqexchange
+# myrabbitmq ʹ�õ���  �Զ���  ��������    myrabbitmq_output ��������   myrabbitmq_input ʹ�õ���Ϣͨ����  myrabbitmqexchange
+# mykafka    ʹ�õ���  Ĭ��   ��������    output             ��������   input            ʹ�õ���Ϣͨ����  mykafkaexchange
+
+# 1. ����Ϊ  myrabbitmq �� ������ �������� ������Ϣͨ�� myrabbitmqexchange �����Ұ� myrabbitmq
+spring.cloud.stream.bindings.myrabbitmq_output.binder=myrabbitmq
+spring.cloud.stream.bindings.myrabbitmq_output.destination=myrabbitmqexchange
+spring.cloud.stream.bindings.myrabbitmq_input.binder=myrabbitmq
+spring.cloud.stream.bindings.myrabbitmq_input.destination = myrabbitmqexchange
+
+#2. Ȼ��Ϊ  myrocketmq �������� �� ������ ������Ϣͨ��  myrocketmqexchange �����Ұ� myrocketmq
+spring.cloud.stream.bindings.myrocketmq_output.binder=myrocketmq
+spring.cloud.stream.bindings.myrocketmq_input.binder=myrocketmq
+spring.cloud.stream.bindings.myrocketmq_output.destination=myrocketmqexchange
+spring.cloud.stream.bindings.myrocketmq_input.destination=myrocketmqexchange
+
+#3. Ȼ��Ϊ  mykafka �������� �� ������ ������Ϣͨ��  mykafkaexchange �����Ұ� mykafka
+# Ȼ�� Ϊ���� ������ ָ����������  mykafka����consumer-group
+spring.cloud.stream.bindings.output.binder=mykafka
+spring.cloud.stream.bindings.input.binder=mykafka
+spring.cloud.stream.bindings.output.destination=mykafkaexchange
+spring.cloud.stream.bindings.input.destination=mykafkaexchange
+
+
+
+########################################### stage.3 ################################################
+# �����������  ������Ϣ��  ��Ϣ��ʽ   ��
+
+########################################### stage.4 ################################################
+# Ȼ������һЩ  ÿ��mq���е�����
+# ����
+# ���� rabbitMQ ��  �����ߺ������� �Ľ����� ����Ϊ topic ����
+spring.cloud.stream.rabbit.bindings.myrabbitmq_input.consumer.exchange-type=topic
+spring.cloud.stream.rabbit.bindings.myrabbitmq_output.producer=.exchange-type=topic
+# ����Kafka  �������Զ��ύ  ����ack ����Ϊ-1
+spring.cloud.stream.kafka.bindings.mykafka_input.consumer.auto-commit-offset=true
+spring.cloud.stream.kafka.binder.required-acks=-1
+
+
+
+
+
+
+
+
+
+
+
+
+
+

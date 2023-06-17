@@ -18,14 +18,23 @@ import org.springframework.cloud.stream.messaging.Source;
 @RestController
 public class MqController {
 
-    @Autowired
-    private Source source;
+
 
     @Autowired
     private MyRabbitSource myRabbitSource;
 
     @Autowired
+    private Source source;
+
+    @Autowired
     private MyRocketSource myRocketSource;
+
+    @RequestMapping("rocket_send")
+    public Object rocketSend(String message){
+        MessageBuilder<String> messageBuilder = MessageBuilder.withPayload(message);
+        myRocketSource.myrocketmqoutput().send(messageBuilder.build());
+        return "message sended:"+message;
+    }
 
     @RequestMapping("kafka_send")
     public Object kafkaSend(String message){
@@ -41,12 +50,8 @@ public class MqController {
         return "message sended:"+message;
     }
 
-    @RequestMapping("rocket_send")
-    public Object rocketSend(String message){
-        MessageBuilder<String> messageBuilder = MessageBuilder.withPayload(message);
-        myRocketSource.myrocketmqoutput().send(messageBuilder.build());
-        return "message sended:"+message;
-    }
+
+
 
 
 
